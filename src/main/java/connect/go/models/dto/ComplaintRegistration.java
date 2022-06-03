@@ -5,7 +5,9 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -14,8 +16,6 @@ public class ComplaintRegistration {
     private String type;
 
     private String description;
-
-    private byte[] archive;
 
     private String bo;
 
@@ -29,5 +29,6 @@ public class ComplaintRegistration {
     @NotBlank
     private String district;
 
-    private LocalDateTime dateTimeComplaint;
+    private LocalDate dateTimeComplaint;
+
 }
