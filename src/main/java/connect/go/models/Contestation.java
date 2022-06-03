@@ -1,5 +1,6 @@
 package connect.go.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,6 +27,7 @@ public class Contestation {
 
     private String description;
 
+    @JsonIgnore
     @Column(length = 50*1024*1024) // 50MB
     private byte[] archive;
 
