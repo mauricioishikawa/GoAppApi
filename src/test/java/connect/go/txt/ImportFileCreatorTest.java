@@ -15,26 +15,26 @@ import java.util.List;
 
 public class ImportFileCreatorTest {
 
-    @Test
-    void criarImportFile() {
-        List<UserRegistration> userRegistrations = new ArrayList<>();
-        userRegistrations.add(new UserRegistration("Mauricio Ishikawa", "mauricio@goapp.com.br", "mauricio123",
-                "usuario", "M", LocalDate.of(1994, 12, 2), "SP", "São Paulo", "Cerqueira César"));
-        userRegistrations.add(new UserRegistration("Tais Fermino", "tais@goapp.com.br", "tais123",
-                "usuario", "F", LocalDate.of(2001, 8, 13), "SP", "São Paulo", "Cerqueira César"));
-        userRegistrations.add(new UserRegistration("Rafaella Kimberlly", "rafaela@goapp.com.br", "rafaela123",
-                "usuario", "F", LocalDate.of(2000, 10, 28), "SP", "São Paulo", "Cerqueira César"));
-        userRegistrations.add(new UserRegistration("Christian Hamai", "christian@goapp.com.br", "mauricio123",
-                "usuario", "M", LocalDate.of(2003, 07, 20), "SP", "São Paulo", "Cerqueira César"));
-        gravaArquivoTxt("cadastro1.txt", userRegistrations);
-
-        List<UserRegistration> userRegistrations2 = new ArrayList<>();
-        userRegistrations2.add(new UserRegistration("Pedro Aragão", "pedro@goapp.com.br", "pedro123",
-                "usuario", "M", LocalDate.of(1994, 12, 2), "SP", "São Paulo", "Cerqueira César"));
-        userRegistrations2.add(new UserRegistration("Jorge Leão", "jorge@goapp.com.br", "jorge123",
-                "usuario", "M", LocalDate.of(2001, 8, 13), "SP", "São Paulo", "Cerqueira César"));
-        gravaArquivoTxt("cadastro2.txt", userRegistrations2);
-    }
+//    @Test
+//    void criarImportFile() {
+//        List<UserRegistration> userRegistrations = new ArrayList<>();
+//        userRegistrations.add(new UserRegistration("Mauricio Ishikawa", "mauricio@goapp.com.br", "mauricio123",
+//                "usuario", "M", LocalDate.of(1994, 12, 2), "SP", "São Paulo", "Cerqueira César"));
+//        userRegistrations.add(new UserRegistration("Tais Fermino", "tais@goapp.com.br", "tais123",
+//                "usuario", "F", LocalDate.of(2001, 8, 13), "SP", "São Paulo", "Cerqueira César"));
+//        userRegistrations.add(new UserRegistration("Rafaella Kimberlly", "rafaela@goapp.com.br", "rafaela123",
+//                "usuario", "F", LocalDate.of(2000, 10, 28), "SP", "São Paulo", "Cerqueira César"));
+//        userRegistrations.add(new UserRegistration("Christian Hamai", "christian@goapp.com.br", "mauricio123",
+//                "usuario", "M", LocalDate.of(2003, 07, 20), "SP", "São Paulo", "Cerqueira César"));
+//        gravaArquivoTxt("cadastro1.txt", userRegistrations);
+//
+//        List<UserRegistration> userRegistrations2 = new ArrayList<>();
+//        userRegistrations2.add(new UserRegistration("Pedro Aragão", "pedro@goapp.com.br", "pedro123",
+//                "usuario", "M", LocalDate.of(1994, 12, 2), "SP", "São Paulo", "Cerqueira César"));
+//        userRegistrations2.add(new UserRegistration("Jorge Leão", "jorge@goapp.com.br", "jorge123",
+//                "usuario", "M", LocalDate.of(2001, 8, 13), "SP", "São Paulo", "Cerqueira César"));
+//        gravaArquivoTxt("cadastro2.txt", userRegistrations2);
+//    }
     public void gravaRegistro(String registro, String nomeArq) {
         BufferedWriter saida = null;
 

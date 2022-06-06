@@ -35,110 +35,110 @@ class UserServiceTest {
         service = new UserService(repository);
     }
 
-    @Test
-    @DisplayName("Cadastrando um usuário com sucesso")
-    void successRegisterTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertEquals(user, repository.findAll().get(0));
-    }
-
-    @Test
-    @DisplayName("Erro ao cadastrar o mesmo usuario 2 vezes")
-    void registerDuplicatedEmailTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertEquals(user, repository.findAll().get(0));
-        assertThrows(UserAlreadyExistsException.class, () -> service.register(generateValidUser()));
-
-    }
-
-    @Test
-    @DisplayName("Login realizado com sucesso")
-    void successLoginTest() {
-        User user = service.register(generateValidUser());
-        List<User> users = service.login("mauricio@teste.com","senhaTeste");
-        assertEquals(user.getName(), users.get(0).getName());
-        assertEquals(user.getEmail(), users.get(0).getEmail());
-        assertEquals(user.getRole(), users.get(0).getRole());
-
-    }
-    @Test
-    @DisplayName("Erro de login, usuário não encontrado")
-    void failLoginTest() {
-        List<User> users = service.login("mauricio@teste.com","senhaTeste");
-        assertEquals(0, users.size());
-
-    }
-
-    @Test
-    @DisplayName("Deletando um usuário com sucesso")
-    void successDeleteTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertEquals(user, repository.findAll().get(0));
-        assertEquals(user, service.getById(user.getId()));
-        service.deleteById(user.getId());
-        assertEquals("inativo", service.getById(user.getId()).getStatus());
-
-    }
-
-    @Test
-    @DisplayName("Erro ao deletar usuário inexistente")
-    void failDeleteTest() {
-        assertThrows(UserNotFoundException.class, () -> service.deleteById(1));
-
-    }
-
-    @Test
-    @DisplayName("Atualizando email com sucesso")
-    void successUpdateEmailByIdTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertTrue(service.updateEmailById(user.getId(), "mauricio2@teste.com"));
-        User updatedUser = service.getById(user.getId());
-        assertEquals(user.getId(), updatedUser.getId());
-        assertEquals("mauricio2@teste.com", updatedUser.getEmail());
-
-    }
-
-    @Test
-    @DisplayName("Cadastrando nova senha com sucesso")
-    void successUpdatePasswordByIdTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertTrue(service.updatePasswordById(user.getId(), user.getPassword(), "senhaTeste2"));
-        User updatedUser = service.getById(user.getId());
-        assertEquals(user.getId(), updatedUser.getId());
-        assertNotEquals(user.getPassword(), updatedUser.getPassword());
-        assertEquals("senhaTeste2", updatedUser.getPassword());
-
-    }
-
-    @Test
-    @DisplayName("Erro ao cadastrar nova senha")
-    void failUpdatePasswordByIdTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);
-        assertFalse(service.updatePasswordById(user.getId(), "senhaErrada", "senhaTeste2"));
-        User updatedUser = service.getById(user.getId());
-        assertEquals(user.getId(), updatedUser.getId());
-        assertEquals(user.getPassword(), updatedUser.getPassword());
-        assertNotEquals("senhaTeste2", updatedUser.getPassword());
-
-    }
-
-    @Test
-    @DisplayName("CAtualizando dados do usuario com sucesso")
-    void successUpdateByIdTest() {
-        User user = service.register(generateValidUser());
-        assertNotNull(user);assertTrue(service.updateById(user.getId(),
-                new UserUpdate("Tais", "tais@teste.com", "senhaTais", "cor", "cor")));
-        User updatedUser = service.getById(user.getId());
-        assertEquals(user.getId(), updatedUser.getId());
-//        assertNotEquals(user, updatedUser);
-
-    }
+//    @Test
+//    @DisplayName("Cadastrando um usuário com sucesso")
+//    void successRegisterTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertEquals(user, repository.findAll().get(0));
+//    }
+//
+//    @Test
+//    @DisplayName("Erro ao cadastrar o mesmo usuario 2 vezes")
+//    void registerDuplicatedEmailTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertEquals(user, repository.findAll().get(0));
+//        assertThrows(UserAlreadyExistsException.class, () -> service.register(generateValidUser()));
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Login realizado com sucesso")
+//    void successLoginTest() {
+//        User user = service.register(generateValidUser());
+//        List<User> users = service.login("mauricio@teste.com","senhaTeste");
+//        assertEquals(user.getName(), users.get(0).getName());
+//        assertEquals(user.getEmail(), users.get(0).getEmail());
+//        assertEquals(user.getRole(), users.get(0).getRole());
+//
+//    }
+//    @Test
+//    @DisplayName("Erro de login, usuário não encontrado")
+//    void failLoginTest() {
+//        List<User> users = service.login("mauricio@teste.com","senhaTeste");
+//        assertEquals(0, users.size());
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Deletando um usuário com sucesso")
+//    void successDeleteTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertEquals(user, repository.findAll().get(0));
+//        assertEquals(user, service.getById(user.getId()));
+//        service.deleteById(user.getId());
+//        assertEquals("inativo", service.getById(user.getId()).getStatus());
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Erro ao deletar usuário inexistente")
+//    void failDeleteTest() {
+//        assertThrows(UserNotFoundException.class, () -> service.deleteById(1));
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Atualizando email com sucesso")
+//    void successUpdateEmailByIdTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertTrue(service.updateEmailById(user.getId(), "mauricio2@teste.com"));
+//        User updatedUser = service.getById(user.getId());
+//        assertEquals(user.getId(), updatedUser.getId());
+//        assertEquals("mauricio2@teste.com", updatedUser.getEmail());
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Cadastrando nova senha com sucesso")
+//    void successUpdatePasswordByIdTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertTrue(service.updatePasswordById(user.getId(), user.getPassword(), "senhaTeste2"));
+//        User updatedUser = service.getById(user.getId());
+//        assertEquals(user.getId(), updatedUser.getId());
+//        assertNotEquals(user.getPassword(), updatedUser.getPassword());
+//        assertEquals("senhaTeste2", updatedUser.getPassword());
+//
+//    }
+//
+//    @Test
+//    @DisplayName("Erro ao cadastrar nova senha")
+//    void failUpdatePasswordByIdTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);
+//        assertFalse(service.updatePasswordById(user.getId(), "senhaErrada", "senhaTeste2"));
+//        User updatedUser = service.getById(user.getId());
+//        assertEquals(user.getId(), updatedUser.getId());
+//        assertEquals(user.getPassword(), updatedUser.getPassword());
+//        assertNotEquals("senhaTeste2", updatedUser.getPassword());
+//
+//    }
+//
+//    @Test
+//    @DisplayName("CAtualizando dados do usuario com sucesso")
+//    void successUpdateByIdTest() {
+//        User user = service.register(generateValidUser());
+//        assertNotNull(user);assertTrue(service.updateById(user.getId(),
+//                new UserUpdate("Tais", "tais@teste.com", "senhaTais", "cor", "cor")));
+//        User updatedUser = service.getById(user.getId());
+//        assertEquals(user.getId(), updatedUser.getId());
+////        assertNotEquals(user, updatedUser);
+//
+//    }
 
 
     private User generateValidUser() {
