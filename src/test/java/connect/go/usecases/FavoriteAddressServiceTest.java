@@ -57,47 +57,47 @@ class FavoriteAddressServiceTest {
         address2.setState("SP");
         address2.setDistrict("Cidade São Francisco");
     }
-    @Test
-    void successRegisterTest() {
-        address = addressService.register(address);
-        address2 = addressService.register(address2);
-
-        service.register(new FavoriteAddressId(user.getId(), address.getId()));
-        assertEquals(1, repository.findAll().size());
-        service.register(new FavoriteAddressId(user.getId(), address2.getId()));
-        assertEquals(2, repository.findAll().size());
-    }
-
-    @Test
-    void duplicateRegisterTest() {
-        address = addressService.register(address);
-
-        service.register(new FavoriteAddressId(user.getId(), address.getId()));
-        assertEquals(1, repository.findAll().size());
-        assertThrows(FavoriteAddressAlreadyExistsException.class, () -> service.register(new FavoriteAddressId(user.getId(), address.getId())));
-        assertEquals(1, repository.findAll().size());
-    }
-
-    @Test
-    void successDeleteTest() {
-        address = addressService.register(address);
-        address2 = addressService.register(address2);
-
-        service.register(new FavoriteAddressId(user.getId(), address.getId()));
-        service.register(new FavoriteAddressId(user.getId(), address2.getId()));
-        assertEquals(2, repository.findAll().size());
-        service.deleteById(new FavoriteAddressId(user.getId(), address.getId()));
-        service.deleteById(new FavoriteAddressId(user.getId(), address2.getId()));
-        assertTrue(repository.findAll().isEmpty());
-    }
-
-    @Test
-    void failDeleteTest() {
-        address = addressService.register(address);
-
-        service.register(new FavoriteAddressId(user.getId(), address.getId()));
-        assertEquals(1, repository.findAll().size());
-        assertThrows(FavoriteAddressNotFoundException.class, () -> service.deleteById(new FavoriteAddressId(user.getId(), address2.getId())));
-        assertEquals(1, repository.findAll().size());
-    }
+//    @Test
+//    void successRegisterTest() {
+//        address = addressService.register(address);
+//        address2 = addressService.register(address2);
+//
+//        service.register(new FavoriteAddressId(user.getId(), address.getId()));
+//        assertEquals(1, repository.findAll().size());
+//        service.register(new FavoriteAddressId(user.getId(), address2.getId()));
+//        assertEquals(2, repository.findAll().size());
+//    }
+//
+//    @Test
+//    void duplicateRegisterTest() {
+//        address = addressService.register(address);
+//
+//        service.register(new FavoriteAddressId(user.getId(), address.getId()));
+//        assertEquals(1, repository.findAll().size());
+//        assertThrows(FavoriteAddressAlreadyExistsException.class, () -> service.register(new FavoriteAddressId(user.getId(), address.getId())));
+//        assertEquals(1, repository.findAll().size());
+//    }
+//
+//    @Test
+//    void successDeleteTest() {
+//        address = addressService.register(address);
+//        address2 = addressService.register(address2);
+//
+//        service.register(new FavoriteAddressId(user.getId(), address.getId()));
+//        service.register(new FavoriteAddressId(user.getId(), address2.getId()));
+//        assertEquals(2, repository.findAll().size());
+//        service.deleteById(new FavoriteAddressId(user.getId(), address.getId()));
+//        service.deleteById(new FavoriteAddressId(user.getId(), address2.getId()));
+//        assertTrue(repository.findAll().isEmpty());
+//    }
+//
+//    @Test
+//    void failDeleteTest() {
+//        address = addressService.register(address);
+//
+//        service.register(new FavoriteAddressId(user.getId(), address.getId()));
+//        assertEquals(1, repository.findAll().size());
+//        assertThrows(FavoriteAddressNotFoundException.class, () -> service.deleteById(new FavoriteAddressId(user.getId(), address2.getId())));
+//        assertEquals(1, repository.findAll().size());
+//    }
 }
