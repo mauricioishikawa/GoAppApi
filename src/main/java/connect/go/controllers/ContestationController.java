@@ -3,7 +3,9 @@ package connect.go.controllers;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.Complaint;
 import connect.go.models.Contestation;
+import connect.go.models.User;
 import connect.go.models.dto.ContestationRegistration;
+import connect.go.models.dto.UserResponse;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.ContestationService;
 import connect.go.usecases.NotificationService;
@@ -34,6 +36,15 @@ public class ContestationController {
     private final ComplaintService complaintService;
     private final UserService userService;
     private final NotificationService notificationService;
+
+    @GetMapping
+    public ResponseEntity<List<Contestation>> getContestations() {
+        List<Contestation> contestations = contestationService.findAll();
+        if (contestations.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(contestations);
+    }
 
     @GetMapping("/complaintId/{complaintId}")
     public ResponseEntity<Contestation> getContestationsByComplaintId(@PathVariable Integer complaintId) {
