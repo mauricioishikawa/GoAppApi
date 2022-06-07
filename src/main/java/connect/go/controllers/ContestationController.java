@@ -63,12 +63,10 @@ public class ContestationController {
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
         notificationService.register(contestation.getComplaint().getUser().getId(),
                 "Sua denúncia foi contestada",
-                "Contestaram a sua denúncia, estamos analisando o caso e durante este processo a denúncia ficara fora" +
-                        " do feed");
+                "Contestaram a sua denúncia, estamos analisando o caso");
         notificationService.register(contestation.getUser().getId(),
                 "Sua contestação foi criada",
-                "Você já pode visualizá-la em minhas contestações e enquanto está em análise a denuncia ficará fora " +
-                        "do feed");
+                "Você já pode visualizá-la em minhas contestações");
         return ResponseEntity.status(201).build();
     }
 
@@ -94,8 +92,7 @@ public class ContestationController {
         Contestation contestation = contestationService.getContestationById(contestationId);
         notificationService.register(contestation.getComplaint().getUser().getId(),
                 "Sua denúncia foi validada",
-                "Analisamos sua denúncia mediante a contestação feita pelo motorista e optamos por colocarmos de " +
-                        "volta ao feed de denúncias");
+                "Analisamos sua denúncia mediante a contestação feita pelo motorista");
         notificationService.register(contestation.getUser().getId(),
                 "Sua contestação foi reprovada",
                 "Analisamos sua contestação e mediante aos fatos apresentados, manteremos a denúncia");
