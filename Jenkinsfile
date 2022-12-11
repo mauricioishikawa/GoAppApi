@@ -28,7 +28,7 @@ pipeline {
         stage("Docker login") {
             steps {
 //                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-sttdin"
+                    sh "echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin"
 //                 }
             }
         }
