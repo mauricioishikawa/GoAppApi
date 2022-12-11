@@ -1,7 +1,6 @@
 pipeline { 
     agent any
 
-   
     stages { 
         stage("Compilation and Analysis") { 
           steps {
@@ -44,6 +43,8 @@ pipeline {
                  archiveArtifacts '**/target/*.jar'
              }
         }
+    }
+}
 
 
 
@@ -69,4 +70,4 @@ pipeline {
 //       cleanWs()
 //     }
 //   }
-}
+// }
