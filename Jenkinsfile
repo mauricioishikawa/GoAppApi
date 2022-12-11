@@ -6,7 +6,7 @@ pipeline {
         stage("Compilation and Analysis") { 
           steps {
             // parallel 'Compilation': {
-                sh "fuser -k 443/tcp || true"
+                sh "fuser -k 8081/tcp || true"
                 sh "mvn clean install -DskipTests"
           } 
             // }
