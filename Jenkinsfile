@@ -14,11 +14,11 @@ pipeline {
          
         // stage("Tests and Deployment") { 
         //     parallel 'Unit tests': { 
-                stage("Runing unit tests") { 
-                  steps {
-                    sh "mvn test -Punit" 
-                  }
-                } 
+//                 stage("Runing unit tests") {
+//                   steps {
+//                     sh "mvn test -Punit"
+//                   }
+//                 }
             
              
             stage("Staging") { 
