@@ -23,7 +23,7 @@ pipeline {
              
             stage("Staging") { 
               steps {
-                sh "java -jar ./target/go-0.0.1-SNAPSHOT.jar &"
+                sh "mvn spring-boot:run &"
               }  
             } 
         } 
