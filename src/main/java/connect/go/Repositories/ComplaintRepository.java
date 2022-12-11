@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
 
     @Query("select c from Complaint c join c.address a where a.city like ?1 order by c.dateTimeComplaint desc")

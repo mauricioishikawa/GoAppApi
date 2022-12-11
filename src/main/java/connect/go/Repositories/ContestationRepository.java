@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ContestationRepository extends JpaRepository<Contestation, Integer> {
 
     @Transactional

@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface AddressRepository extends JpaRepository<Address, Integer> {
 
     boolean existsByDistrict(String district);

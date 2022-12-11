@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ComplaintSavedRepository extends JpaRepository<ComplaintSaved, ComplaintSavedId> {
     boolean existsByUserIdAndComplaintId(Integer userId, Integer complaintId);
 
