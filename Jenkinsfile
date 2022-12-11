@@ -1,6 +1,10 @@
 pipeline { 
     agent any
 
+    environment {
+        dockerhub=credentials('dockerhub')
+    }
+
     stages { 
         stage("Compilation and Analysis") { 
           steps {
@@ -24,7 +28,7 @@ pipeline {
         stage("Docker login") {
             steps {
 //                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u mauishikawa - p 1994Maii."
+                    sh "echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-sttdin"
 //                 }
             }
         }
