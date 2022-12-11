@@ -18,7 +18,7 @@ pipeline {
         }
         stage("Build Docker Image") {
             steps {
-                sh 'docker build -t mauishikawa/docker_jenkins_springboot:${BUILD_NUMER}'
+                sh 'docker build -t mauishikawa/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage("Docker login") {
@@ -30,12 +30,12 @@ pipeline {
         }
         stage("Docker push") {
             steps {
-                sh 'docker push mauishikawa/docker_jenkins_springboot:${BUILD_NUMER}'
+                sh 'docker push mauishikawa/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage("Docker deploy") {
             steps {
-                sh 'docker run -itd -p 8081:8081 mauishikawa/docker_jenkins_springboot:${BUILD_NUMER}'
+                sh 'docker run -itd -p 8081:8081 mauishikawa/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage("Archiving") {
