@@ -6,7 +6,7 @@ pipeline {
         stage("Compilation and Analysis") { 
           steps {
             // parallel 'Compilation': {
-                sh "sudo fuser -k 443/tcp || true" 
+//                 sh "sudo fuser -k 443/tcp || true"
                 sh "mvn clean install -DskipTests"
           } 
             // }
@@ -23,7 +23,7 @@ pipeline {
              
             stage("Staging") { 
               steps {
-                sh "sudo mvn spring-boot:run"   
+                sh "mvn spring-boot:run"
               }  
             } 
         } 
