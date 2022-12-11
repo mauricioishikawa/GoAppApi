@@ -23,7 +23,7 @@ pipeline {
              
             stage("Staging") { 
               steps {
-                sh "mvn spring-boot:run &"
+                sh "nohup mvn spring-boot:run &"
               }  
             } 
         } 
