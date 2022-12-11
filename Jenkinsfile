@@ -1,4 +1,4 @@
-node { 
+pipeline { 
     agent any
 
    
@@ -22,7 +22,7 @@ node {
             } 
         } 
     }
-    
+
   post {
     always {
       cleanWs()
