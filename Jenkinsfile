@@ -18,7 +18,7 @@ pipeline {
         }
         stage("Build Docker Image") {
             steps {
-                sh 'docker build -t mauishikawa/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker build -t mauishikawa/docker_jenkins_springboot:${BUILD_NUMBER} .'
             }
         }
         stage("Docker login") {
